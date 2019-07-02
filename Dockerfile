@@ -26,7 +26,7 @@ bundle install
 
 ADD app ${APP_ROOT}
 
-RUN if [ -e /app/tmp/pids/*.pid ]; then rm /app/tmp/pids/*.pid; fi
+RUN if [ -e /app/tmp/pids/server.pid ]; then rm /app/tmp/pids/server.pid; fi
 
 EXPOSE 3000
 
