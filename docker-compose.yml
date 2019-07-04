@@ -13,6 +13,7 @@ services:
       context: .
     ports:
       - "80:3000"
+      - "3035:3035"
     volumes:
       - ./app:/app
     environment:
