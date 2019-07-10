@@ -1,27 +1,27 @@
-version: '3'
+version: '3' # docker-compose.ymlのフォーマットのバージョン
 services:
-  db:
-    image: mariadb
+  db: # データベースサービス
+    image: mariadb # dockerイメージ
     ports:
-      - "3306:3306"
+      - "3306:3306" # mariddbの解放ポート
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db:/var/lib/mysql # 永続化の為にローカルディレクトリに保存
     environment:
       MYSQL_ROOT_PASSWORD: password
-  app:
+  app: # Railsサービス
     build:
-      context: .
+      context: . # Rails用の Dockerfile カレントディレクトリ
     ports:
-      - "80:3000"
-      - "3035:3035"
+      - "80:3000"   # http ポート
+      - "3035:3035" # webpack-dev-server ポート
     volumes:
-      - ./app:/app
-    environment:
+      - ./app:/app  # 永続化の為にローカルディレクトリに保存
+    environment: # 環境変数
       RAILS_ENV:           development
       MYSQL_USER:          root
       MYSQL_PASSWORD:      password
       MYSQL_HOST:          db
       MYSQL_DATABASE:      app_development
-      RAILS_SERVE_STATIC_FILES: "true"
-    depends_on:
+      RAILS_SERVE_STATIC_FILES: "true" # /public配下の静的ファイルを有効(productionの場合)
+    depends_on: # 依存サービス
       - db
