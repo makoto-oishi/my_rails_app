@@ -24,6 +24,9 @@ bundle install
 
 ADD app ${APP_ROOT}
 
+RUN \
+bundle exec rake yarn:install
+
 # 解放ポート
 EXPOSE 3000
 
