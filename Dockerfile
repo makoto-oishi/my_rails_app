@@ -20,15 +20,9 @@ ADD ./app/Gemfile Gemfile
 ADD ./app/Gemfile.lock Gemfile.lock
 
 RUN \
-bundle install 
+bundle install
 
 ADD app ${APP_ROOT}
-
-RUN \
-bundle exec rake yarn:install
-
-ADD app/node_modules ${APP_ROOT}/node_modules
-
 
 # 解放ポート
 EXPOSE 3000
