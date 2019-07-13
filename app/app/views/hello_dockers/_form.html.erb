@@ -1,0 +1,22 @@
+<%= form_with(model: hello_docker, local: true) do |form| %>
+  <% if hello_docker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hello_docker.errors.count, "error") %> prohibited this hello_docker from being saved:</h2>
+
+      <ul>
+      <% hello_docker.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
