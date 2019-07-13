@@ -16,6 +16,7 @@ services:
       - "3035:3035" # webpack-dev-server ポート
     volumes:
       - ./app:/app  # 永続化の為にローカルディレクトリに保存
+      - ./app/node_volumes
     environment: # 環境変数
       RAILS_ENV:           development
       MYSQL_USER:          root
