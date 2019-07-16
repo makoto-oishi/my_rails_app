@@ -5,5 +5,7 @@ if [ -e /app/tmp/pids/server.pid ]; then
 fi
 
 bundle exec rails db:migrate
+bundle exec rails yarn:install
+bundle exec rails assets:precompile
 foreman start
 echo -------------------------------
